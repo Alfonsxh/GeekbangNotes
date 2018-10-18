@@ -25,10 +25,26 @@ int SearchNormal(int *a, size_t size, int target) {
 /// \param elem_size 传入对象元素大小
 /// \param cmpFn 对比函数
 /// \return 目标所在位置
-int SearchParadigm(void *a, size_t size, void* target, size_t elem_size, int(*cmpFn)(void*, void*)){
+int SearchParadigm(void *a, size_t size, void *target, size_t elem_size, int(*cmpFn)(void *, void *)) {
     for (int i = 0; i < size; i++) {
-        if(cmpFn((unsigned char *)a + elem_size * i, target) == 0){
+        if (cmpFn((unsigned char *) a + elem_size * i, target) == 0) {
             return i;
         }
     }
+}
+
+/// int 类型比较操作
+/// \param x 待比较的参数1
+/// \param y 待比较的参数2
+/// \return 比较结果， 0为相等
+int int_cmp(int *x, int *y) {
+    return *x - *y;
+}
+
+/// char 类型比较操作
+/// \param x 待比较的参数1
+/// \param y 待比较的参数2
+/// \return 比较结果， 0为相等
+int string_cmp(char *x, char *y) {
+    return strcmp(x, y);
 }
