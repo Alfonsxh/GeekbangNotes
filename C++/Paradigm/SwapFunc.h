@@ -6,21 +6,22 @@
 
 #define min(x, y)  ((x)>(y) ? (y) : (x))
 
-/**
- * 交换两个值
- * 给定了交换值的类型，如果需要交换别的类型的值，则需要另一个函数
- * **/
+/// 交换两个值
+/// 给定了交换值的类型，如果需要交换别的类型的值，则需要另一个函数
+/// \param x 传入参数指针
+/// \param y 传入参数指针
 void SwapInt(int *x, int *y) {
     int temp = *x;
     *x = *y;
     *y = temp;
 }
 
-/**
- * 交换两个值
- * 使用 void * 代替普通类型
- * 由于使用void * ，编译器不能通过类型得到类型的尺寸，添加 size 参数表示类型的长度
- * **/
+/// 交换两个值
+/// 使用 void * 代替普通类型
+/// 由于使用void * ，编译器不能通过类型得到类型的尺寸，添加 size 参数表示类型的长度
+/// \param x 传入参数指针
+/// \param y 传入参数指针
+/// \param size 传入指针大小
 void SwapVoid(void *x, void *y, size_t size) {
     char tmp[size];
     memcpy(tmp, y, size);
