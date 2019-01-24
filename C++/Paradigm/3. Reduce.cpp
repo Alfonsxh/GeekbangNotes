@@ -34,19 +34,20 @@ struct Employee {
     double salary;
 };
 
-//template<class T, class Cond>
-//struct counter {
-//    size_t operator()(size_t c, T t) {
-//        return c + (Cond(t) ? 1 : 0);
-//    }
-//};
-//
-//
-//template<class Iter, class Cond>
-//size_t count_if(Iter begin, Iter end, Cond c) {
-//    return reduce(begin, end, size_t(0), counter<Iter::value_type, Cond>(c));
-//
-//}
+template<class T, class Cond>
+struct counter {
+    Cond cond;
+    size_t operator()(size_t c, T t) {
+        return c + (cond(t) ? 1 : 0);
+    }
+};
+
+
+template<class Iter, class Cond>
+size_t count_if(Iter begin, Iter end, Cond c) {
+    auto op = counter<typename Iter::value_type, Cond>{c};
+    return reduce(begin, end, size_t(0), op);
+}
 
 int main() {
     vector<Employee> v_employee;
@@ -84,7 +85,8 @@ int main() {
 
     cout << "min salary person is -> " << min_salary_person.name << endl;
 
-//    size_t cnt = count_if(v_employee.begin(), v_employee.end(), [](Employee e) -> bool { return e.salary < 10000; });
+    size_t cnt = count_if(v_employee.begin(), v_employee.end(), [](Employee e) -> bool { return e.salary < 10000; });
+    cout << cnt <<endl;
 
     return 0;
 }
