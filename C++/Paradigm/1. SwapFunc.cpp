@@ -44,9 +44,15 @@ void SwapVoid(void *x, void *y, size_t size) {
  * x 或 y 的值会被累加两次
  * */
 #define swap(x, y, size) {\
-	char temp[size]; \
-	memcpy(temp, &y, size); \
-	memcpy(&y,   &x, size); \
-	memcpy(&x, temp, size); \
+    char temp[size]; \
+    memcpy(temp, &y, size); \
+    memcpy(&y,   &x, size); \
+    memcpy(&x, temp, size); \
 }
 
+int main() {
+    int i = 0, j = 1;
+
+    SwapInt(&i, &j);
+    return 0;
+}

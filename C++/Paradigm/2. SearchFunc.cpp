@@ -1,6 +1,8 @@
 //
 // Created by xiaohui on 2018/10/18.
 //
+#include <iostream>
+#include <cstring>
 
 /// 在int 指针对象中搜索目标出现的位置，在此版本中传入对象的类型一定，目标一定
 /// \param a 传入对象
@@ -45,6 +47,17 @@ int int_cmp(int *x, int *y) {
 /// \param x 待比较的参数1
 /// \param y 待比较的参数2
 /// \return 比较结果， 0为相等
-int string_cmp(char *x, char *y) {
-    return strcmp(x, y);
+std::string string_cmp(char *x, char *y) {
+    if (strcmp(x, y) == 0)
+        return "True";
+    else
+        return "False";
+}
+
+
+int main() {
+    char *i = "stl", *j = "stl";
+
+    std::cout << string_cmp(i, j) << std::endl;
+    return 0;
 }
